@@ -50,12 +50,18 @@ def resourceChallenge():
     print(f"Pizza Square (area / dough): {calcAreaSquare(18) / 18:.2f}")
 
 def fuelChallenge():
-    with open("input.txt", "r") as file:
-        masses = file.read().splitlines()
-    
     mass = 0
-    for m in masses:
-        mass += round(int(m) / 3) - 2
+    
+    with open("input.txt", "r") as file:
+        for num in file:
+            # print(num.strip(), end=',')
+            mass += math.floor(int(num) / 3) - 2
+    # with open("input.txt", "r") as file:
+    #     masses = file.read().splitlines()
+    
+    # mass = 0
+    # for m in masses:
+    #     mass += 
     
     print(f"\nTotal Mass: {mass}")
     
