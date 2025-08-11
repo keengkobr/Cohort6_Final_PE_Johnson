@@ -1,0 +1,64 @@
+###Problem 1###
+
+def converter():
+    user_input = input('Choose either Miles above Mars or Kilometers above Mars: ').lower()
+    if user_input == 'Miles above Mars':
+        num_miles = int(input('Enter number of miles: '))
+        num_yards = num_miles*1760
+        num_feet = num_miles*5280
+        num_inches = num_miles*63360
+        print(f'The number of miles you entered equals {num_yards} yards, {num_feet} feet, and {num_inches} inches.')
+    else:
+        num_km = int(input('Enter number of kilometers: '))
+        num_meters = num_km/1000
+        num_cm = num_km/100000
+        num_mm = num_km/1000000
+        print(f'The number of kilimeters you entered equals {num_km} meters, {num_cm} centimeters, and {num_mm} milimeters.')
+        
+converter()
+
+###Problem 2###
+import math
+def determine_cost(units,pizza_type):
+    area = 0
+    cost = 0
+    if pizza_type == 'circular':
+        area = 2*int((math.pi * (15/2)**2))
+        cost = (units/area)
+    elif pizza_type == 'triangle':
+        area = (20**2)*.5
+        cost = units/area
+    else:
+        area = 18**2
+        cost = units/area
+    return cost
+
+#determine_cost(18,'square')
+
+def best_deal(deal_1,deal_2,deal_3):
+    cost_1 = determine_cost(20,deal_1)
+    cost_2 = determine_cost(20,deal_2)
+    cost_3 = determine_cost(18,deal_3)
+    max_num = max([cost_1,cost_2,cost_3])
+    best_auto = ''
+    if max_num == deal_1:
+        best_auto = '1'
+    elif max_num == cost_2:
+        best_auto = '2'
+    else:
+        best_auto = '3'
+    print(f'Automatron number {best_auto} is most efficient')
+
+best_deal('circular','triangle','square')
+
+###Problem 3###
+
+import pandas as pd
+df = pd.read_csv('input.csv')
+
+def find_fuel(num):
+    fuel_requirement = math.floor(num/3)-2
+    return fuel_requirement
+
+fuel_values = df.iloc[:, 0].apply(find_fuel).sum()
+print(f'Sum of required fuel is {fuel_values}')
