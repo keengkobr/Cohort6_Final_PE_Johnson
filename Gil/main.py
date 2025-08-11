@@ -59,10 +59,6 @@ def fuelChallenge():
     # with open("input.txt", "r") as file:
     #     masses = file.read().splitlines()
     
-    # mass = 0
-    # for m in masses:
-    #     mass += 
-    
     print(f"\nTotal Mass: {mass}")
     
 def main():
